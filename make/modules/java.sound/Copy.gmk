@@ -28,57 +28,9 @@ include Modules.gmk
 
 ################################################################################
 
-$(CONF_DST_DIR)/sound.properties: $(TOPDIR)/src/java.desktop/share/conf/sound.properties
+$(CONF_DST_DIR)/sound.properties: $(TOPDIR)/src/java.sound/share/conf/sound.properties
 	$(call install-file)
 
 TARGETS += $(CONF_DST_DIR)/sound.properties
-
-################################################################################
-#
-# Copy property files from sun/print to LIB_DST_DIR
-#
-PSFONTPROPFILE_SRC_DIR := $(TOPDIR)/src/java.desktop/share/conf
-PSFONTPROPFILE_SRCS := $(wildcard $(PSFONTPROPFILE_SRC_DIR)/psfont*.properties*)
-PSFONTPROPFILE_TARGET_FILES := $(subst $(PSFONTPROPFILE_SRC_DIR),$(LIB_DST_DIR),$(PSFONTPROPFILE_SRCS))
-
-$(LIB_DST_DIR)/%: $(PSFONTPROPFILE_SRC_DIR)/%
-	$(call install-file)
-
-TARGETS += $(PSFONTPROPFILE_TARGET_FILES)
-
-################################################################################
-#
-# Copy and filter the legal files depending on what 3rd party components are
-# bundled or linked from the OS.
-#
-ifeq ($(USE_EXTERNAL_LIBJPEG), true)
-  LEGAL_EXCLUDES += jpeg.md
-endif
-
-ifeq ($(USE_EXTERNAL_LIBGIF), true)
-  LEGAL_EXCLUDES += giflib.md
-endif
-
-ifeq ($(USE_EXTERNAL_LIBPNG), true)
-  LEGAL_EXCLUDES += libpng.md
-endif
-
-ifeq ($(USE_EXTERNAL_LCMS), true)
-  LEGAL_EXCLUDES += lcms.md
-endif
-
-ifeq ($(FREETYPE_TO_USE), system)
-  LEGAL_EXCLUDES += freetype.md
-endif
-
-ifeq ($(USE_EXTERNAL_HARFBUZZ), true)
-  LEGAL_EXCLUDES += harfbuzz.md
-endif
-
-$(eval $(call SetupCopyLegalFiles, COPY_LEGAL, \
-    EXCLUDES := $(LEGAL_EXCLUDES), \
-))
-
-TARGETS += $(COPY_LEGAL)
 
 ################################################################################

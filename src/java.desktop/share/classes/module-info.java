@@ -43,14 +43,6 @@
  * @uses javax.imageio.spi.ImageWriterSpi
  * @uses javax.print.PrintServiceLookup
  * @uses javax.print.StreamPrintServiceFactory
- * @uses javax.sound.midi.spi.MidiDeviceProvider
- * @uses javax.sound.midi.spi.MidiFileReader
- * @uses javax.sound.midi.spi.MidiFileWriter
- * @uses javax.sound.midi.spi.SoundbankReader
- * @uses javax.sound.sampled.spi.AudioFileReader
- * @uses javax.sound.sampled.spi.AudioFileWriter
- * @uses javax.sound.sampled.spi.FormatConversionProvider
- * @uses javax.sound.sampled.spi.MixerProvider
  *
  * @moduleGraph
  * @since 9
@@ -58,6 +50,7 @@
 module java.desktop {
     requires java.prefs;
 
+    requires transitive java.sound;
     requires transitive java.datatransfer;
     requires transitive java.xml;
 
@@ -89,10 +82,6 @@ module java.desktop {
     exports javax.print.attribute;
     exports javax.print.attribute.standard;
     exports javax.print.event;
-    exports javax.sound.midi;
-    exports javax.sound.midi.spi;
-    exports javax.sound.sampled;
-    exports javax.sound.sampled.spi;
     exports javax.swing;
     exports javax.swing.border;
     exports javax.swing.colorchooser;
@@ -134,14 +123,6 @@ module java.desktop {
     uses javax.imageio.spi.ImageWriterSpi;
     uses javax.print.PrintServiceLookup;
     uses javax.print.StreamPrintServiceFactory;
-    uses javax.sound.midi.spi.MidiDeviceProvider;
-    uses javax.sound.midi.spi.MidiFileReader;
-    uses javax.sound.midi.spi.MidiFileWriter;
-    uses javax.sound.midi.spi.SoundbankReader;
-    uses javax.sound.sampled.spi.AudioFileReader;
-    uses javax.sound.sampled.spi.AudioFileWriter;
-    uses javax.sound.sampled.spi.FormatConversionProvider;
-    uses javax.sound.sampled.spi.MixerProvider;
 
     uses sun.swing.InteropProvider;
 
@@ -156,46 +137,4 @@ module java.desktop {
 
     provides javax.print.StreamPrintServiceFactory with
         sun.print.PSStreamPrinterFactory;
-
-    provides javax.sound.midi.spi.MidiDeviceProvider with
-        com.sun.media.sound.MidiInDeviceProvider,
-        com.sun.media.sound.MidiOutDeviceProvider,
-        com.sun.media.sound.RealTimeSequencerProvider,
-        com.sun.media.sound.SoftProvider;
-
-    provides javax.sound.midi.spi.MidiFileReader with
-        com.sun.media.sound.StandardMidiFileReader;
-
-    provides javax.sound.midi.spi.MidiFileWriter with
-        com.sun.media.sound.StandardMidiFileWriter;
-
-    provides javax.sound.midi.spi.SoundbankReader with
-        com.sun.media.sound.AudioFileSoundbankReader,
-        com.sun.media.sound.DLSSoundbankReader,
-        com.sun.media.sound.JARSoundbankReader,
-        com.sun.media.sound.SF2SoundbankReader;
-
-    provides javax.sound.sampled.spi.AudioFileReader with
-        com.sun.media.sound.AiffFileReader,
-        com.sun.media.sound.AuFileReader,
-        com.sun.media.sound.SoftMidiAudioFileReader,
-        com.sun.media.sound.WaveFileReader,
-        com.sun.media.sound.WaveFloatFileReader,
-        com.sun.media.sound.WaveExtensibleFileReader;
-
-    provides javax.sound.sampled.spi.AudioFileWriter with
-        com.sun.media.sound.AiffFileWriter,
-        com.sun.media.sound.AuFileWriter,
-        com.sun.media.sound.WaveFileWriter,
-        com.sun.media.sound.WaveFloatFileWriter;
-
-    provides javax.sound.sampled.spi.FormatConversionProvider with
-        com.sun.media.sound.AlawCodec,
-        com.sun.media.sound.AudioFloatFormatConverter,
-        com.sun.media.sound.PCMtoPCMCodec,
-        com.sun.media.sound.UlawCodec;
-
-    provides javax.sound.sampled.spi.MixerProvider with
-        com.sun.media.sound.DirectAudioDeviceProvider,
-        com.sun.media.sound.PortMixerProvider;
 }
