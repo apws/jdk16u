@@ -39,7 +39,7 @@ import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.Soundbank;
 import javax.sound.midi.spi.SoundbankReader;
 
-//import sun.reflect.misc.ReflectUtil; //MIXWORX
+import sun.reflect.misc.ReflectUtil;
 
 /**
  * JarSoundbankReader is used to read soundbank object from jar files.
@@ -90,7 +90,7 @@ public final class JARSoundbankReader extends SoundbankReader {
                     try {
                         Class<?> c = Class.forName(line.trim(), false, ucl);
                         if (Soundbank.class.isAssignableFrom(c)) {
-                            //ReflectUtil.checkPackageAccess(c); //MIXWORX
+                            ReflectUtil.checkPackageAccess(c);
                             Object o = c.newInstance();
                             soundbanks.add((Soundbank) o);
                         }

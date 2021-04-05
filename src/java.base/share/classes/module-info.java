@@ -280,6 +280,7 @@ module java.base {
     exports sun.reflect.generics.reflectiveObjects to
         java.desktop;
     exports sun.reflect.misc to
+        java.sound,
         java.desktop,
         java.datatransfer,
         java.management,
@@ -287,6 +288,7 @@ module java.base {
         java.rmi,
         java.sql.rowset;
     exports sun.security.action to
+        java.sound,
         java.desktop,
         java.security.jgss,
         jdk.crypto.ec,
