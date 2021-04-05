@@ -25,7 +25,9 @@
 
 package com.sun.media.sound;
 
-import java.applet.AudioClip;
+//import java.applet.AudioClip;
+import javax.sound.sampled.AudioClip;
+
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

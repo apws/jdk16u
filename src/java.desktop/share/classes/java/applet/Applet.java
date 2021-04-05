@@ -44,6 +44,7 @@ import javax.accessibility.AccessibleState;
 import javax.accessibility.AccessibleStateSet;
 
 import com.sun.media.sound.JavaSoundAudioClip;
+import javax.sound.sampled.AudioClip;
 
 /**
  * An applet is a small program that is intended not to be run on its own, but

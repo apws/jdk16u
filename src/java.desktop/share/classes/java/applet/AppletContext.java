@@ -32,6 +32,8 @@ import java.net.URL;
 import java.util.Enumeration;
 import java.util.Iterator;
 
+import javax.sound.sampled.AudioClip;
+
 /**
  * This interface corresponds to an applet's environment: the document
  * containing the applet and the other applets in the same document.

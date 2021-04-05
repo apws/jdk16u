@@ -30,7 +30,8 @@ import com.sun.beans.finder.ClassFinder;
 import java.applet.Applet;
 import java.applet.AppletContext;
 import java.applet.AppletStub;
-import java.applet.AudioClip;
+//import java.applet.AudioClip;
+import javax.sound.sampled.AudioClip;
 
 import java.awt.Image;
 
